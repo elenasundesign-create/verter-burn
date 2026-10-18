@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERTER — сжечь</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- общие градиенты для всех svg -->
+<svg id="defs" width="0" height="0" aria-hidden="true">
+  <defs>
+    <radialGradient id="gMatchHead" cx=".35" cy=".35" r=".7">
+      <stop offset="0" stop-color="#b8402f"/>
+      <stop offset="1" stop-color="#5e140e"/>
+    </radialGradient>
+    <radialGradient id="gFlameGlow">
+      <stop offset="0" stop-color="#ffb347" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="fBlur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="fBlur8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="fBlur16" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="16"/></filter>
+  </defs>
+</svg>
+
+<div id="stage">
+  <div id="scene-cabinet" class="layer"></div>
+  <div id="scene-drawer" class="layer hidden"></div>
+
+  <div id="scene-computer" class="layer hidden">
+    <div id="pc-podium" class="layer"></div>
+    <div id="pc-computer" class="layer"></div>
+    <div id="pc-ash" class="layer"></div>
+    <canvas id="fire"></canvas>
+    <div id="flash" class="layer"></div>
+    <div id="pc-matches" class="layer hidden"></div>
+  </div>
+
+  <div id="dim" class="layer"></div>
+
+  <div id="sheet" class="hidden">
+    <div class="sheet-inner">
+      <div class="sheet-meta"><span>/ лист 01</span><span>// verter</span></div>
+      <h1 class="sheet-title">напиши свои негативные эмоции тут</h1>
+      <textarea id="message" maxlength="3000" spellcheck="false" placeholder="начни писать…"></textarea>
+    </div>
+    <svg class="creases" viewBox="0 0 460 650" preserveAspectRatio="none"></svg>
+  </div>
+  <button id="btn-burn" class="btn off hidden" type="button">поджечь</button>
+
+  <div id="handL" class="hand"></div>
+  <div id="handR" class="hand"></div>
+  <div id="ball" class="hidden"></div>
+
+  <div id="final" class="hidden">
+    <div class="final-note">/ с облегчением</div>
+    <button id="btn-again" class="btn" type="button">написать ещё раз</button>
+  </div>
+
+  <div id="hint"></div>
+  <div id="hud">
+    <div class="tl">/ VERTER &nbsp;&nbsp;// BURN</div>
+    <div class="tc">место, где можно выговориться</div>
+    <div class="tr">/ кадр &nbsp;// <span id="hud-frame">01</span></div>
+  </div>
+  <div id="fx" class="layer"></div>
+  <div id="fade" class="layer"></div>
+</div>
+
+<div id="admin" hidden>
+  <div class="admin-box">
+    <div class="admin-title">/ послания</div>
+    <div class="admin-count">сохранено: <b id="admin-count">0</b></div>
+    <button type="button" data-act="txt">скачать .txt</button>
+    <button type="button" data-act="json">скачать .json</button>
+    <button type="button" data-act="clear" class="danger">очистить всё</button>
+    <button type="button" data-act="close">закрыть</button>
+    <div class="admin-help">ctrl + shift + E — открыть/закрыть · F — полный экран · M — звук</div>
+  </div>
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/store.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/fire.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
